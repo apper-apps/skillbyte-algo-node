@@ -1,9 +1,21 @@
-import topicsData from '@/services/mockData/topics.json'
+import topicsData from "@/services/mockData/topics.json";
+import React from "react";
+import Error from "@/components/ui/Error";
 
 class TopicsService {
   constructor() {
     this.topics = [...topicsData]
+    this.customTopics = this.loadCustomTopics()
     this.selectedTopics = this.loadSelectedTopics()
+  }
+
+  loadCustomTopics() {
+    const saved = localStorage.getItem('skillbyte-custom-topics')
+    return saved ? JSON.parse(saved) : []
+  }
+
+  saveCustomTopics() {
+    localStorage.setItem('skillbyte-custom-topics', JSON.stringify(this.customTopics))
   }
 
   loadSelectedTopics() {
@@ -15,18 +27,20 @@ class TopicsService {
     localStorage.setItem('skillbyte-selected-topics', JSON.stringify(this.selectedTopics))
   }
 
-  async getAll() {
+async getAll() {
     return new Promise((resolve) => {
       setTimeout(() => {
-        resolve([...this.topics])
+        const allTopics = [...this.topics, ...this.customTopics]
+        resolve(allTopics)
       }, 300)
     })
   }
 
-  async getById(id) {
+async getById(id) {
     return new Promise((resolve, reject) => {
       setTimeout(() => {
-        const topic = this.topics.find(t => t.Id === id)
+        const allTopics = [...this.topics, ...this.customTopics]
+        const topic = allTopics.find(t => t.Id === id)
         if (topic) {
           resolve({ ...topic })
         } else {
@@ -69,6 +83,24 @@ class TopicsService {
         this.selectedTopics = this.selectedTopics.filter(id => id !== topicId)
         this.saveSelectedTopics()
         resolve()
+}, 200)
+    })
+  }
+
+  async addCustomTopic(topic) {
+    return new Promise((resolve) => {
+      setTimeout(() => {
+        this.customTopics.push(topic)
+        this.saveCustomTopics()
+        resolve(topic)
+      }, 200)
+    })
+  }
+
+  async getCustomTopics() {
+    return new Promise((resolve) => {
+      setTimeout(() => {
+        resolve([...this.customTopics])
       }, 200)
     })
   }

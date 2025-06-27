@@ -1,6 +1,16 @@
 class UserProgressService {
   constructor() {
     this.progress = this.loadProgress()
+    this.generationStatus = this.loadGenerationStatus()
+  }
+
+  loadGenerationStatus() {
+    const saved = localStorage.getItem('skillbyte-generation-status')
+    return saved ? JSON.parse(saved) : {}
+  }
+
+  saveGenerationStatus() {
+    localStorage.setItem('skillbyte-generation-status', JSON.stringify(this.generationStatus))
   }
 
   loadProgress() {
@@ -106,6 +116,38 @@ class UserProgressService {
         this.saveProgress()
         resolve()
       }, 200)
+}, 200)
+    })
+  }
+
+  async setGenerationStatus(topicName, status) {
+    return new Promise((resolve) => {
+      setTimeout(() => {
+        this.generationStatus[topicName] = {
+          status: status, // 'generating', 'completed', 'error'
+          timestamp: new Date().toISOString()
+        }
+        this.saveGenerationStatus()
+        resolve()
+      }, 100)
+    })
+  }
+
+  async getGenerationStatus(topicName) {
+    return new Promise((resolve) => {
+      setTimeout(() => {
+        resolve(this.generationStatus[topicName] || null)
+      }, 100)
+    })
+  }
+
+  async clearGenerationStatus(topicName) {
+    return new Promise((resolve) => {
+      setTimeout(() => {
+        delete this.generationStatus[topicName]
+        this.saveGenerationStatus()
+        resolve()
+      }, 100)
     })
   }
 }

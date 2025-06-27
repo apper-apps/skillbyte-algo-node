@@ -1,9 +1,18 @@
-import lessonsData from '@/services/mockData/lessons.json'
-
+import lessonsData from "@/services/mockData/lessons.json";
 class LessonsService {
   constructor() {
     this.lessons = [...lessonsData]
+    this.customLessons = this.loadCustomLessons()
     this.completedLessons = this.loadCompletedLessons()
+  }
+
+  loadCustomLessons() {
+    const saved = localStorage.getItem('skillbyte-custom-lessons')
+    return saved ? JSON.parse(saved) : []
+  }
+
+  saveCustomLessons() {
+    localStorage.setItem('skillbyte-custom-lessons', JSON.stringify(this.customLessons))
   }
 
   loadCompletedLessons() {
@@ -15,18 +24,20 @@ class LessonsService {
     localStorage.setItem('skillbyte-completed-lessons', JSON.stringify(this.completedLessons))
   }
 
-  async getAll() {
+async getAll() {
     return new Promise((resolve) => {
       setTimeout(() => {
-        resolve([...this.lessons])
+        const allLessons = [...this.lessons, ...this.customLessons]
+        resolve(allLessons)
       }, 300)
     })
   }
 
-  async getById(id) {
+async getById(id) {
     return new Promise((resolve, reject) => {
       setTimeout(() => {
-        const lesson = this.lessons.find(l => l.Id === id)
+        const allLessons = [...this.lessons, ...this.customLessons]
+        const lesson = allLessons.find(l => l.Id === id)
         if (lesson) {
           const isCompleted = this.completedLessons.includes(id)
           resolve({ 
@@ -51,8 +62,9 @@ class LessonsService {
           return
         }
 
-        // Get lessons for selected topics
-        const todaysLessons = this.lessons
+// Get lessons for selected topics
+        const allLessons = [...this.lessons, ...this.customLessons]
+        const todaysLessons = allLessons
           .filter(lesson => selectedTopics.includes(lesson.topicId))
           .slice(0, 3) // Limit to 3 lessons per day
           .map(lesson => ({
@@ -66,9 +78,10 @@ class LessonsService {
   }
 
   async getLessonsByTopic(topicId) {
-    return new Promise((resolve) => {
+return new Promise((resolve) => {
       setTimeout(() => {
-        const topicLessons = this.lessons
+        const allLessons = [...this.lessons, ...this.customLessons]
+        const topicLessons = allLessons
           .filter(lesson => lesson.topicId === topicId)
           .map(lesson => ({
             ...lesson,
@@ -96,8 +109,25 @@ class LessonsService {
       setTimeout(() => {
         resolve([...this.completedLessons])
       }, 200)
+}, 200)
+    })
+  }
+
+  async addCustomLessons(lessons) {
+    return new Promise((resolve) => {
+      setTimeout(() => {
+        this.customLessons.push(...lessons)
+        this.saveCustomLessons()
+        resolve(lessons)
+      }, 300)
+    })
+  }
+
+  async getCustomLessons() {
+    return new Promise((resolve) => {
+      setTimeout(() => {
+        resolve([...this.customLessons])
+      }, 200)
     })
   }
 }
-
-export const lessonsService = new LessonsService()
