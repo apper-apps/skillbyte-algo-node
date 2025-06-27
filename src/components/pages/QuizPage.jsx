@@ -1,14 +1,14 @@
-import React, { useState, useEffect } from 'react'
-import { useParams, useNavigate } from 'react-router-dom'
-import { motion, AnimatePresence } from 'framer-motion'
-import { toast } from 'react-toastify'
-import QuizQuestion from '@/components/molecules/QuizQuestion'
-import Button from '@/components/atoms/Button'
-import Loading from '@/components/ui/Loading'
-import Error from '@/components/ui/Error'
-import ApperIcon from '@/components/ApperIcon'
-import { quizService } from '@/services/api/quizService'
-import { userProgressService } from '@/services/api/userProgressService'
+import React, { useEffect, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
+import { AnimatePresence, motion } from "framer-motion";
+import { toast } from "react-toastify";
+import { quizService } from "@/services/api/quizService";
+import { userProgressService } from "@/services/api/userProgressService";
+import ApperIcon from "@/components/ApperIcon";
+import QuizQuestion from "@/components/molecules/QuizQuestion";
+import Loading from "@/components/ui/Loading";
+import Error from "@/components/ui/Error";
+import Button from "@/components/atoms/Button";
 
 const QuizPage = () => {
   const { lessonId } = useParams()
@@ -23,20 +23,34 @@ const QuizPage = () => {
   const [isSubmitting, setIsSubmitting] = useState(false)
 
   useEffect(() => {
-    loadQuiz()
+    if (lessonId) {
+      loadQuiz()
+    }
   }, [lessonId])
 
   const loadQuiz = async () => {
     try {
       setLoading(true)
       setError('')
-      
       const quizData = await quizService.getQuizForLesson(parseInt(lessonId))
-      setQuiz(quizData)
+      
+      // Handle case where no quiz exists for this lesson
+      if (!quizData) {
+        setError('No quiz available for this lesson yet. Check back later!')
+        return
+      }
+      
+      // Validate quiz has questions
+      if (!quizData.questions || quizData.questions.length === 0) {
+        setError('This quiz has no questions available.')
+        return
+      }
+      
+setQuiz(quizData)
       setAnswers(new Array(quizData.questions.length).fill(null))
-    } catch (err) {
-      setError('Failed to load quiz')
-      console.error('Error loading quiz:', err)
+    } catch (error) {
+      setError(error.message || 'Failed to load quiz. Please try again.')
+      console.error('Error loading quiz:', error)
     } finally {
       setLoading(false)
     }
@@ -58,9 +72,15 @@ const QuizPage = () => {
     }, 2000)
   }
 
-  const calculateAndShowResults = async (finalAnswers) => {
+const calculateAndShowResults = async (finalAnswers) => {
+    // Add null safety check for quiz and questions
+    if (!quiz?.questions) {
+      toast.error('Quiz data is not available')
+      return
+    }
+
     const correctAnswers = finalAnswers.reduce((count, answer, index) => {
-      if (answer === quiz.questions[index].correctAnswer) {
+      if (answer === quiz.questions[index]?.correctAnswer) {
         return count + 1
       }
       return count
@@ -73,7 +93,8 @@ const QuizPage = () => {
     // Submit quiz results
     try {
       setIsSubmitting(true)
-      await quizService.submitQuiz(quiz.Id, finalAnswers, finalScore)
+      // Fixed: quiz.Id -> quiz.id (property name correction)
+      await quizService.submitQuiz(quiz.id, finalAnswers, finalScore)
       await userProgressService.updateProgress(parseInt(lessonId), finalScore)
       
       if (finalScore >= 80) {

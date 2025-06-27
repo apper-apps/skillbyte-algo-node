@@ -15,14 +15,15 @@ class QuizService {
     localStorage.setItem('skillbyte-completed-quizzes', JSON.stringify(this.completedQuizzes))
   }
 
-  async getQuizForLesson(lessonId) {
-    return new Promise((resolve, reject) => {
+async getQuizForLesson(lessonId) {
+    return new Promise((resolve) => {
       setTimeout(() => {
         const quiz = this.quizzes.find(q => q.lessonId === lessonId)
         if (quiz) {
           resolve({ ...quiz })
         } else {
-          reject(new Error('Quiz not found for this lesson'))
+          // Return null instead of rejecting - missing quiz is not an error
+          resolve(null)
         }
       }, 300)
     })
