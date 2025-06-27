@@ -79,11 +79,9 @@ const [topics, setTopics] = useState([])
       toast.success('Learning plan created! Check the Learn tab for your first lesson.')
     } catch (error) {
       toast.error('Failed to create learning plan')
-      console.error('Error creating learning plan:', error)
+console.error('Error creating learning plan:', error)
     }
   }
-
-}
 
   const handleCreateCustomTopic = async () => {
     if (!customTopicInput.trim()) {
