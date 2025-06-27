@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useCallback, useMemo, memo } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { toast } from "react-toastify";
 import { llmService } from "@/services/api/llmService";
@@ -141,107 +141,117 @@ console.error('Error creating learning plan:', error)
     }
   }
 
-  const CustomTopicModal = () => (
-    <AnimatePresence>
-      {showCustomTopicModal && (
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4"
-          onClick={() => !isGenerating && setShowCustomTopicModal(false)}
-        >
-          <motion.div
-            initial={{ scale: 0.9, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
-            exit={{ scale: 0.9, opacity: 0 }}
-            className="bg-white dark:bg-gray-800 rounded-2xl p-6 max-w-md w-full shadow-2xl"
-            onClick={(e) => e.stopPropagation()}
-          >
-            <div className="flex items-center justify-between mb-6">
-              <h3 className="font-display font-bold text-xl text-gray-900 dark:text-white">
-                Create Custom Topic
-              </h3>
-              {!isGenerating && (
-                <button
-                  onClick={() => setShowCustomTopicModal(false)}
-                  className="text-gray-400 hover:text-gray-600 dark:hover:text-gray-300"
-                >
-                  <ApperIcon name="X" className="w-6 h-6" />
-                </button>
-              )}
-            </div>
+const CustomTopicModal = memo(() => {
+    const handleInputChange = useCallback((e) => {
+      setCustomTopicInput(e.target.value);
+    }, []);
 
-            {isGenerating ? (
-              <div className="text-center py-8">
-                <div className="w-16 h-16 bg-gradient-to-r from-primary-500 to-secondary-500 rounded-full flex items-center justify-center mx-auto mb-4 animate-pulse">
-                  <ApperIcon name="Sparkles" className="w-8 h-8 text-white" />
-                </div>
-                <h4 className="font-display font-semibold text-lg text-gray-900 dark:text-white mb-2">
-                  Generating Your Lessons
-                </h4>
-                <p className="text-gray-600 dark:text-gray-400 text-sm">
-                  Our AI is creating personalized lessons for "{customTopicInput}". This usually takes 30-60 seconds.
-                </p>
+    const characterCount = useMemo(() => {
+      return `${customTopicInput.length}/100 characters`;
+    }, [customTopicInput.length]);
+
+    return (
+      <AnimatePresence>
+        {showCustomTopicModal && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4"
+            onClick={() => !isGenerating && setShowCustomTopicModal(false)}
+          >
+            <motion.div
+              initial={{ scale: 0.9, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.9, opacity: 0 }}
+              className="bg-white dark:bg-gray-800 rounded-2xl p-6 max-w-md w-full shadow-2xl"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <div className="flex items-center justify-between mb-6">
+                <h3 className="font-display font-bold text-xl text-gray-900 dark:text-white">
+                  Create Custom Topic
+                </h3>
+                {!isGenerating && (
+                  <button
+                    onClick={() => setShowCustomTopicModal(false)}
+                    className="text-gray-400 hover:text-gray-600 dark:hover:text-gray-300"
+                  >
+                    <ApperIcon name="X" className="w-6 h-6" />
+                  </button>
+                )}
               </div>
-            ) : (
-              <>
-                <div className="mb-6">
-                  <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                    What would you like to learn about?
-                  </label>
-                  <input
-                    type="text"
-                    value={customTopicInput}
-                    onChange={(e) => setCustomTopicInput(e.target.value)}
-                    placeholder="e.g., Quantum Physics, Creative Writing, Guitar Basics..."
-                    className="w-full px-4 py-3 bg-gray-50 dark:bg-gray-700 border border-gray-200 dark:border-gray-600 rounded-xl text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent"
-                    maxLength={100}
-                  />
-                  <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">
-                    {customTopicInput.length}/100 characters
+
+              {isGenerating ? (
+                <div className="text-center py-8">
+                  <div className="w-16 h-16 bg-gradient-to-r from-primary-500 to-secondary-500 rounded-full flex items-center justify-center mx-auto mb-4 animate-pulse">
+                    <ApperIcon name="Sparkles" className="w-8 h-8 text-white" />
+                  </div>
+                  <h4 className="font-display font-semibold text-lg text-gray-900 dark:text-white mb-2">
+                    Generating Your Lessons
+                  </h4>
+                  <p className="text-gray-600 dark:text-gray-400 text-sm">
+                    Our AI is creating personalized lessons for "{customTopicInput}". This usually takes 30-60 seconds.
                   </p>
                 </div>
+              ) : (
+                <>
+                  <div className="mb-6">
+                    <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                      What would you like to learn about?
+                    </label>
+                    <input
+                      type="text"
+                      value={customTopicInput}
+                      onChange={handleInputChange}
+                      placeholder="e.g., Quantum Physics, Creative Writing, Guitar Basics..."
+                      className="w-full px-4 py-3 bg-gray-50 dark:bg-gray-700 border border-gray-200 dark:border-gray-600 rounded-xl text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent"
+                      maxLength={100}
+                    />
+                    <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">
+                      {characterCount}
+                    </p>
+                  </div>
 
-                <div className="bg-blue-50 dark:bg-blue-900/20 rounded-xl p-4 mb-6">
-                  <div className="flex items-start space-x-3">
-                    <ApperIcon name="Info" className="w-5 h-5 text-blue-500 flex-shrink-0 mt-0.5" />
-                    <div>
-                      <h4 className="text-sm font-medium text-blue-900 dark:text-blue-100 mb-1">
-                        How it works
-                      </h4>
-                      <p className="text-xs text-blue-700 dark:text-blue-200">
-                        We'll use AI to generate 5 personalized lessons on your topic, complete with quizzes and key learning points.
-                      </p>
+                  <div className="bg-blue-50 dark:bg-blue-900/20 rounded-xl p-4 mb-6">
+                    <div className="flex items-start space-x-3">
+                      <ApperIcon name="Info" className="w-5 h-5 text-blue-500 flex-shrink-0 mt-0.5" />
+                      <div>
+                        <h4 className="text-sm font-medium text-blue-900 dark:text-blue-100 mb-1">
+                          How it works
+                        </h4>
+                        <p className="text-xs text-blue-700 dark:text-blue-200">
+                          We'll use AI to generate 5 personalized lessons on your topic, complete with quizzes and key learning points.
+                        </p>
+                      </div>
                     </div>
                   </div>
-                </div>
 
-                <div className="flex space-x-3">
-                  <Button
-                    variant="ghost"
-                    onClick={() => setShowCustomTopicModal(false)}
-                    className="flex-1"
-                  >
-                    Cancel
-                  </Button>
-                  <Button
-                    variant="primary"
-                    onClick={handleCreateCustomTopic}
-                    disabled={!customTopicInput.trim()}
-                    className="flex-1"
-                    icon="Sparkles"
-                  >
-                    Generate Lessons
-                  </Button>
-                </div>
-              </>
-            )}
+                  <div className="flex space-x-3">
+                    <Button
+                      variant="ghost"
+                      onClick={() => setShowCustomTopicModal(false)}
+                      className="flex-1"
+                    >
+                      Cancel
+                    </Button>
+                    <Button
+                      variant="primary"
+                      onClick={handleCreateCustomTopic}
+                      disabled={!customTopicInput.trim()}
+                      className="flex-1"
+                      icon="Sparkles"
+                    >
+                      Generate Lessons
+                    </Button>
+                  </div>
+                </>
+              )}
+            </motion.div>
           </motion.div>
-        </motion.div>
-      )}
-    </AnimatePresence>
-  )
+        )}
+      </AnimatePresence>
+    );
+  });
   if (loading) return <Loading type="cards" />
   if (error) return <Error message={error} onRetry={loadData} />
   if (topics.length === 0) {
