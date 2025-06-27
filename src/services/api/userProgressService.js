@@ -101,7 +101,7 @@ class UserProgressService {
     }
   }
 
-  async resetProgress() {
+async resetProgress() {
     return new Promise((resolve) => {
       setTimeout(() => {
         this.progress = {
@@ -116,7 +116,6 @@ class UserProgressService {
         this.saveProgress()
         resolve()
       }, 200)
-}, 200)
     })
   }
 

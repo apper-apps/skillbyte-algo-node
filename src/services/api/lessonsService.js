@@ -104,12 +104,11 @@ return new Promise((resolve) => {
     })
   }
 
-  async getCompletedLessons() {
+async getCompletedLessons() {
     return new Promise((resolve) => {
       setTimeout(() => {
         resolve([...this.completedLessons])
       }, 200)
-}, 200)
     })
   }
 
