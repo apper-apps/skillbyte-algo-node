@@ -7,6 +7,7 @@ import LearnPage from '@/components/pages/LearnPage'
 import ProgressPage from '@/components/pages/ProgressPage'
 import LessonDetailPage from '@/components/pages/LessonDetailPage'
 import QuizPage from '@/components/pages/QuizPage'
+import SettingsPage from '@/components/pages/SettingsPage'
 
 function App() {
   const [darkMode, setDarkMode] = useState(() => {
@@ -37,8 +38,9 @@ function App() {
         <Layout darkMode={darkMode} toggleDarkMode={toggleDarkMode}>
           <Routes>
             <Route path="/" element={<HomePage />} />
-            <Route path="/learn" element={<LearnPage />} />
+<Route path="/learn" element={<LearnPage />} />
             <Route path="/progress" element={<ProgressPage />} />
+            <Route path="/settings" element={<SettingsPage />} />
             <Route path="/lesson/:lessonId" element={<LessonDetailPage />} />
             <Route path="/quiz/:lessonId" element={<QuizPage />} />
           </Routes>
