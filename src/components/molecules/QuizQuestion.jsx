@@ -12,9 +12,21 @@ const QuizQuestion = ({
   selectedAnswer = null,
   correctAnswer = null
 }) => {
-  const [selectedOption, setSelectedOption] = useState(selectedAnswer)
-  const [isAnswered, setIsAnswered] = useState(showResult)
+  const [selectedOption, setSelectedOption] = useState(null)
+  const [isAnswered, setIsAnswered] = useState(false)
 
+  // Sync with props only when they change, not on every render
+  React.useEffect(() => {
+    if (selectedAnswer !== null && selectedAnswer !== selectedOption) {
+      setSelectedOption(selectedAnswer)
+    }
+  }, [selectedAnswer])
+
+  React.useEffect(() => {
+    if (showResult !== isAnswered) {
+      setIsAnswered(showResult)
+    }
+  }, [showResult])
   const handleOptionSelect = (optionIndex) => {
     if (isAnswered) return
     setSelectedOption(optionIndex)
