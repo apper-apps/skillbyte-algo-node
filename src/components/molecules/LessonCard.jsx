@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { PanInfo, motion, useMotionValue, useTransform } from "framer-motion";
+import { motion, useMotionValue, useTransform } from "framer-motion";
 import ApperIcon from "@/components/ApperIcon";
 import Button from "@/components/atoms/Button";
 import ProgressRing from "@/components/atoms/ProgressRing";
