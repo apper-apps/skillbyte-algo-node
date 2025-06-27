@@ -1,0 +1,362 @@
+[
+  {
+    "Id": 1,
+    "lessonId": 1,
+    "questions": [
+      {
+        "question": "Which keyword is used to declare a block-scoped variable in JavaScript?",
+        "options": ["var", "let", "const", "function"],
+        "correctAnswer": 1,
+        "explanation": "'let' creates block-scoped variables, while 'var' creates function-scoped variables."
+      },
+      {
+        "question": "What data type would the value '42' be in JavaScript?",
+        "options": ["String", "Number", "Boolean", "Object"],
+        "correctAnswer": 1,
+        "explanation": "42 is a numeric value, so it's of type Number in JavaScript."
+      },
+      {
+        "question": "Which of these creates a constant that cannot be reassigned?",
+        "options": ["var", "let", "const", "static"],
+        "correctAnswer": 2,
+        "explanation": "'const' creates constants that cannot be reassigned after declaration."
+      },
+      {
+        "question": "What will typeof 'Hello World' return?",
+        "options": ["text", "string", "String", "char"],
+        "correctAnswer": 1,
+        "explanation": "The typeof operator returns 'string' (lowercase) for string values."
+      },
+      {
+        "question": "Which represents an array in JavaScript?",
+        "options": ["{1, 2, 3}", "[1, 2, 3]", "(1, 2, 3)", "<1, 2, 3>"],
+        "correctAnswer": 1,
+        "explanation": "Arrays in JavaScript are declared using square brackets []."
+      }
+    ]
+  },
+  {
+    "Id": 2,
+    "lessonId": 2,
+    "questions": [
+      {
+        "question": "What is the correct syntax for an arrow function?",
+        "options": ["function => {}", "=> function {}", "() => {}", "arrow function() {}"],
+        "correctAnswer": 2,
+        "explanation": "Arrow functions use the syntax () => {} where () contains parameters."
+      },
+      {
+        "question": "What type of scope do variables declared inside a function have?",
+        "options": ["Global scope", "Local scope", "Block scope", "Module scope"],
+        "correctAnswer": 1,
+        "explanation": "Variables declared inside functions have local scope and can't be accessed outside."
+      },
+      {
+        "question": "Which method of declaring functions is hoisted?",
+        "options": ["Arrow functions", "Function expressions", "Function declarations", "Anonymous functions"],
+        "correctAnswer": 2,
+        "explanation": "Function declarations are hoisted, meaning they can be called before they're defined."
+      },
+      {
+        "question": "What happens when you try to access a local variable outside its function?",
+        "options": ["Returns undefined", "Returns null", "Throws an error", "Returns empty string"],
+        "correctAnswer": 2,
+        "explanation": "Accessing a local variable outside its scope throws a ReferenceError."
+      },
+      {
+        "question": "Which keyword is used to return a value from a function?",
+        "options": ["give", "return", "output", "yield"],
+        "correctAnswer": 1,
+        "explanation": "The 'return' keyword is used to return values from functions."
+      }
+    ]
+  },
+  {
+    "Id": 3,
+    "lessonId": 3,
+    "questions": [
+      {
+        "question": "What does JSX stand for?",
+        "options": ["JavaScript XML", "JavaScript Extension", "Java Syntax Extension", "JavaScript Syntax"],
+        "correctAnswer": 0,
+        "explanation": "JSX stands for JavaScript XML and allows you to write HTML-like syntax in JavaScript."
+      },
+      {
+        "question": "Which is the preferred way to create components in modern React?",
+        "options": ["Class components", "Function components", "Object components", "Module components"],
+        "correctAnswer": 1,
+        "explanation": "Function components are preferred in modern React, especially with Hooks."
+      },
+      {
+        "question": "What must a React component return?",
+        "options": ["A string", "JSX or null", "An object", "A number"],
+        "correctAnswer": 1,
+        "explanation": "React components must return JSX, null, or other valid React elements."
+      },
+      {
+        "question": "How do you pass data to a React component?",
+        "options": ["Through state", "Through props", "Through variables", "Through functions"],
+        "correctAnswer": 1,
+        "explanation": "Data is passed to React components through props (properties)."
+      },
+      {
+        "question": "What allows function components to use state and lifecycle features?",
+        "options": ["Props", "Context", "Hooks", "Methods"],
+        "correctAnswer": 2,
+        "explanation": "React Hooks allow function components to use state and other React features."
+      }
+    ]
+  },
+  {
+    "Id": 4,
+    "lessonId": 4,
+    "questions": [
+      {
+        "question": "What are props in React?",
+        "options": ["Mutable data", "Read-only data from parent", "Component methods", "State variables"],
+        "correctAnswer": 1,
+        "explanation": "Props are read-only data passed from parent components to child components."
+      },
+      {
+        "question": "Which Hook is used to add state to function components?",
+        "options": ["useEffect", "useState", "useContext", "useReducer"],
+        "correctAnswer": 1,
+        "explanation": "useState is the Hook used to add state to function components."
+      },
+      {
+        "question": "When does a React component re-render?",
+        "options": ["When props change", "When state changes", "Both A and B", "Only manually"],
+        "correctAnswer": 2,
+        "explanation": "React components re-render when either props or state changes."
+      },
+      {
+        "question": "What does 'lifting state up' mean?",
+        "options": ["Moving state to a parent component", "Moving state to a child component", "Deleting state", "Creating new state"],
+        "correctAnswer": 0,
+        "explanation": "Lifting state up means moving state to a common parent component when multiple components need it."
+      },
+      {
+        "question": "What is the correct way to update state in a function component?",
+        "options": ["state = newValue", "setState(newValue)", "useState(newValue)", "Use the setter function"],
+        "correctAnswer": 3,
+        "explanation": "You should use the setter function returned by useState to update state."
+      }
+    ]
+  },
+  {
+    "Id": 5,
+    "lessonId": 5,
+    "questions": [
+      {
+        "question": "What is the time complexity for accessing an element in an array by index?",
+        "options": ["O(1)", "O(n)", "O(log n)", "O(n²)"],
+        "correctAnswer": 0,
+        "explanation": "Array access by index is O(1) - constant time - because elements are stored contiguously."
+      },
+      {
+        "question": "What is the time complexity for searching an unsorted array?",
+        "options": ["O(1)", "O(n)", "O(log n)", "O(n²)"],
+        "correctAnswer": 1,
+        "explanation": "Searching an unsorted array requires checking each element, so it's O(n) - linear time."
+      },
+      {
+        "question": "Which operation is most efficient on arrays?",
+        "options": ["Insertion at beginning", "Insertion at end", "Deletion from middle", "Searching"],
+        "correctAnswer": 1,
+        "explanation": "Insertion at the end is most efficient (O(1)) because no elements need to be shifted."
+      },
+      {
+        "question": "Why is inserting at the beginning of an array expensive?",
+        "options": ["Array becomes full", "All elements must be shifted", "Memory allocation fails", "Index becomes invalid"],
+        "correctAnswer": 1,
+        "explanation": "Inserting at the beginning requires shifting all existing elements one position right."
+      },
+      {
+        "question": "Arrays are best suited for scenarios that require:",
+        "options": ["Frequent insertions", "Frequent deletions", "Random access", "Dynamic sizing"],
+        "correctAnswer": 2,
+        "explanation": "Arrays excel at random access (accessing any element by index in constant time)."
+      }
+    ]
+  },
+  {
+    "Id": 6,
+    "lessonId": 6,
+    "questions": [
+      {
+        "question": "Which colors are considered primary colors?",
+        "options": ["Red, Green, Blue", "Red, Blue, Yellow", "Blue, Yellow, Green", "Red, Orange, Yellow"],
+        "correctAnswer": 1,
+        "explanation": "In traditional color theory, the primary colors are Red, Blue, and Yellow."
+      },
+      {
+        "question": "What type of font is Times New Roman?",
+        "options": ["Sans-serif", "Serif", "Monospace", "Script"],
+        "correctAnswer": 1,
+        "explanation": "Times New Roman is a serif font, characterized by small decorative strokes."
+      },
+      {
+        "question": "Which color scheme uses colors opposite each other on the color wheel?",
+        "options": ["Analogous", "Complementary", "Triadic", "Monochromatic"],
+        "correctAnswer": 1,
+        "explanation": "Complementary color schemes use colors directly opposite each other on the color wheel."
+      },
+      {
+        "question": "What is the recommended maximum number of font families in a design?",
+        "options": ["1", "2-3", "4-5", "As many as needed"],
+        "correctAnswer": 1,
+        "explanation": "It's recommended to limit font families to 2-3 to maintain visual consistency."
+      },
+      {
+        "question": "Why is contrast important in typography?",
+        "options": ["It looks modern", "It improves readability", "It saves space", "It reduces file size"],
+        "correctAnswer": 1,
+        "explanation": "Sufficient contrast between text and background is crucial for readability and accessibility."
+      }
+    ]
+  },
+  {
+    "Id": 7,
+    "lessonId": 7,
+    "questions": [
+      {
+        "question": "What defines code blocks in Python?",
+        "options": ["Curly braces {}", "Parentheses ()", "Indentation", "Semicolons ;"],
+        "correctAnswer": 2,
+        "explanation": "Python uses indentation to define code blocks, unlike languages that use curly braces."
+      },
+      {
+        "question": "Which naming convention is preferred for Python variables?",
+        "options": ["camelCase", "PascalCase", "snake_case", "kebab-case"],
+        "correctAnswer": 2,
+        "explanation": "Python follows snake_case convention for variable and function names."
+      },
+      {
+        "question": "What data type is True in Python?",
+        "options": ["String", "Integer", "Boolean", "Object"],
+        "correctAnswer": 2,
+        "explanation": "True (and False) are Boolean values in Python."
+      },
+      {
+        "question": "How do you create a dictionary in Python?",
+        "options": ["[key: value]", "{key: value}", "(key: value)", "<key: value>"],
+        "correctAnswer": 1,
+        "explanation": "Dictionaries in Python are created using curly braces with key: value pairs."
+      },
+      {
+        "question": "Python is known for emphasizing:",
+        "options": ["Speed", "Complexity", "Readability", "Memory usage"],
+        "correctAnswer": 2,
+        "explanation": "Python's philosophy emphasizes code readability and simplicity."
+      }
+    ]
+  },
+  {
+    "Id": 8,
+    "lessonId": 8,
+    "questions": [
+      {
+        "question": "What type of learning uses labeled training data?",
+        "options": ["Supervised learning", "Unsupervised learning", "Reinforcement learning", "Deep learning"],
+        "correctAnswer": 0,
+        "explanation": "Supervised learning uses labeled training data to learn patterns and make predictions."
+      },
+      {
+        "question": "Which is NOT a common application of machine learning?",
+        "options": ["Image recognition", "Recommendation systems", "Static websites", "Natural language processing"],
+        "correctAnswer": 2,
+        "explanation": "Static websites don't typically require machine learning, unlike the other dynamic applications."
+      },
+      {
+        "question": "What happens when a model performs well on training data but poorly on new data?",
+        "options": ["Underfitting", "Overfitting", "Perfect fit", "Data corruption"],
+        "correctAnswer": 1,
+        "explanation": "Overfitting occurs when a model learns the training data too specifically and fails to generalize."
+      },
+      {
+        "question": "What is feature engineering?",
+        "options": ["Building hardware", "Creating new input variables", "Testing models", "Collecting data"],
+        "correctAnswer": 1,
+        "explanation": "Feature engineering involves creating new input variables from existing data to improve model performance."
+      },
+      {
+        "question": "Machine learning requires a strong foundation in:",
+        "options": ["Art and design", "Statistics and math", "Marketing", "Social media"],
+        "correctAnswer": 1,
+        "explanation": "Machine learning heavily relies on statistics, mathematics, and programming concepts."
+      }
+    ]
+  },
+  {
+    "Id": 9,
+    "lessonId": 9,
+    "questions": [
+      {
+        "question": "What does SEO stand for?",
+        "options": ["Search Engine Organization", "Search Engine Optimization", "Social Engine Optimization", "Site Engine Organization"],
+        "correctAnswer": 1,
+        "explanation": "SEO stands for Search Engine Optimization - the practice of improving website visibility in search results."
+      },
+      {
+        "question": "Which is considered an on-page SEO factor?",
+        "options": ["Backlinks", "Domain authority", "Title tags", "Social media shares"],
+        "correctAnswer": 2,
+        "explanation": "Title tags are on-page SEO elements that you can control directly on your website."
+      },
+      {
+        "question": "What should be the primary focus when creating content?",
+        "options": ["Keyword density", "User intent", "Search engines", "Competitors"],
+        "correctAnswer": 1,
+        "explanation": "Content should primarily focus on user intent - what users are actually looking for."
+      },
+      {
+        "question": "How often should you publish content for effective content marketing?",
+        "options": ["Daily", "Weekly", "Monthly", "Consistently according to your schedule"],
+        "correctAnswer": 3,
+        "explanation": "Consistency is more important than frequency - publish regularly according to your sustainable schedule."
+      },
+      {
+        "question": "SEO and content marketing are best described as:",
+        "options": ["Quick wins", "Long-term strategies", "One-time activities", "Technical fixes"],
+        "correctAnswer": 1,
+        "explanation": "SEO and content marketing are long-term strategies that require patience and consistent effort."
+      }
+    ]
+  },
+  {
+    "Id": 10,
+    "lessonId": 10,
+    "questions": [
+      {
+        "question": "What is the foundation of great UX design?",
+        "options": ["Beautiful visuals", "User research", "Latest trends", "Personal preferences"],
+        "correctAnswer": 1,
+        "explanation": "User research is the foundation of great UX design as it helps understand user needs and behaviors."
+      },
+      {
+        "question": "Which research method involves observing users interact with designs?",
+        "options": ["Surveys", "Interviews", "Usability testing", "Card sorting"],
+        "correctAnswer": 2,
+        "explanation": "Usability testing involves observing users as they interact with designs to identify issues."
+      },
+      {
+        "question": "User personas should be based on:",
+        "options": ["Assumptions", "Real research data", "Competitor analysis", "Design trends"],
+        "correctAnswer": 1,
+        "explanation": "Effective personas must be based on real research data, not assumptions or guesswork."
+      },
+      {
+        "question": "What is the purpose of card sorting?",
+        "options": ["Test visual design", "Understand mental models", "Measure performance", "Check accessibility"],
+        "correctAnswer": 1,
+        "explanation": "Card sorting helps understand how users categorize and organize information in their minds."
+      },
+      {
+        "question": "Good user research helps:",
+        "options": ["Make designs prettier", "Reduce development time", "Make user-centered decisions", "Increase team size"],
+        "correctAnswer": 2,
+        "explanation": "The primary benefit of user research is enabling user-centered design decisions."
+      }
+    ]
+  }
+]

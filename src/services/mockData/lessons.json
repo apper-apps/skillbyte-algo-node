@@ -1,0 +1,82 @@
+[
+  {
+    "Id": 1,
+    "topicId": 1,
+    "title": "Variables and Data Types",
+    "content": "JavaScript variables are containers for storing data values. In JavaScript, you can declare variables using var, let, or const keywords.\n\nThe main data types in JavaScript include:\n- Numbers: 42, 3.14\n- Strings: \"Hello World\"\n- Booleans: true, false\n- Arrays: [1, 2, 3]\n- Objects: {name: \"John\", age: 30}\n\nUnderstanding these basics is crucial for writing effective JavaScript code. Variables declared with 'let' have block scope, while 'var' has function scope. The 'const' keyword creates constants that cannot be reassigned.",
+    "imageUrl": "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=800&h=400&fit=crop",
+    "duration": 3
+  },
+  {
+    "Id": 2,
+    "topicId": 1,
+    "title": "Functions and Scope",
+    "content": "Functions are reusable blocks of code that perform specific tasks. They are fundamental building blocks in JavaScript programming.\n\nYou can declare functions in several ways:\n- Function declaration: function myFunction() {}\n- Function expression: const myFunction = function() {}\n- Arrow function: const myFunction = () => {}\n\nScope determines where variables can be accessed in your code. JavaScript has global scope and local scope. Variables declared inside a function have local scope and cannot be accessed from outside the function.\n\nUnderstanding scope is essential for writing clean, maintainable code and avoiding variable conflicts.",
+    "imageUrl": "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=800&h=400&fit=crop",
+    "duration": 3
+  },
+  {
+    "Id": 3,
+    "topicId": 2,
+    "title": "Introduction to React Components",
+    "content": "React components are the building blocks of React applications. They let you split the UI into independent, reusable pieces.\n\nThere are two main types of components:\n- Function Components: Simple functions that return JSX\n- Class Components: ES6 classes that extend React.Component\n\nFunction components are now preferred due to React Hooks, which allow you to use state and other React features without writing a class.\n\nExample of a simple function component:\nfunction Welcome(props) {\n  return <h1>Hello, {props.name}!</h1>;\n}\n\nComponents can receive data through props and manage their own internal state.",
+    "imageUrl": "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=800&h=400&fit=crop",
+    "duration": 3
+  },
+  {
+    "Id": 4,
+    "topicId": 2,
+    "title": "State and Props in React",
+    "content": "State and props are fundamental concepts in React that control how data flows through your application.\n\nProps (properties) are read-only data passed from parent to child components. They allow components to receive data and configuration from their parent.\n\nState is mutable data that belongs to a component. When state changes, the component re-renders to reflect the new data.\n\nWith React Hooks, you can use state in function components:\nconst [count, setCount] = useState(0);\n\nBest practices:\n- Keep state as simple as possible\n- Lift state up when multiple components need the same data\n- Use props to pass data down the component tree",
+    "imageUrl": "https://images.unsplash.com/photo-1581291518857-4e27b48ff24e?w=800&h=400&fit=crop",
+    "duration": 3
+  },
+  {
+    "Id": 5,
+    "topicId": 3,
+    "title": "Arrays and Time Complexity",
+    "content": "Arrays are fundamental data structures that store elements in contiguous memory locations. Understanding arrays is crucial for efficient programming.\n\nKey characteristics of arrays:\n- Fixed size (in some languages)\n- Elements accessed by index\n- Random access: O(1) time complexity\n- Sequential storage in memory\n\nCommon array operations and their time complexities:\n- Access: O(1)\n- Search: O(n)\n- Insertion at end: O(1)\n- Insertion at beginning: O(n)\n- Deletion: O(n)\n\nArrays are excellent for scenarios where you need fast random access to elements, but they're not ideal when you frequently insert or delete elements from the beginning or middle.",
+    "imageUrl": "https://images.unsplash.com/photo-1518932945647-7a1c969f8be2?w=800&h=400&fit=crop",
+    "duration": 3
+  },
+  {
+    "Id": 6,
+    "topicId": 4,
+    "title": "Color Theory and Typography",
+    "content": "Color theory and typography are foundational elements of effective web design. They work together to create visual hierarchy and enhance user experience.\n\nColor Theory Basics:\n- Primary colors: Red, Blue, Yellow\n- Secondary colors: Green, Orange, Purple\n- Color harmony: Complementary, analogous, triadic schemes\n- Psychology of colors affects user emotions and behavior\n\nTypography Fundamentals:\n- Font families: Serif, Sans-serif, Monospace\n- Hierarchy: Size, weight, and spacing create visual order\n- Readability: Contrast and spacing affect legibility\n- Web fonts: Google Fonts, Adobe Fonts for consistency\n\nBest practices:\n- Limit your color palette to 2-3 primary colors\n- Use no more than 2-3 font families\n- Ensure sufficient contrast for accessibility",
+    "imageUrl": "https://images.unsplash.com/photo-1561070791-2526d30994b5?w=800&h=400&fit=crop",
+    "duration": 3
+  },
+  {
+    "Id": 7,
+    "topicId": 5,
+    "title": "Python Syntax and Variables",
+    "content": "Python is known for its clean, readable syntax that makes it an excellent language for beginners and experienced programmers alike.\n\nKey Python syntax features:\n- Indentation defines code blocks (no curly braces)\n- Case-sensitive variable names\n- Dynamic typing (no need to declare variable types)\n- Intuitive keywords: if, elif, else, for, while\n\nVariable naming conventions:\n- Use snake_case for variables and functions\n- Use UPPER_CASE for constants\n- Use descriptive names: user_name, not un\n\nPython data types:\n- int: 42\n- float: 3.14\n- str: \"Hello World\"\n- bool: True, False\n- list: [1, 2, 3]\n- dict: {'key': 'value'}\n\nPython's philosophy emphasizes code readability and simplicity.",
+    "imageUrl": "https://images.unsplash.com/photo-1526379095098-d400fd0bf935?w=800&h=400&fit=crop",
+    "duration": 3
+  },
+  {
+    "Id": 8,
+    "topicId": 6,
+    "title": "Introduction to Machine Learning",
+    "content": "Machine Learning is a subset of artificial intelligence that enables computers to learn and make decisions from data without being explicitly programmed.\n\nTypes of Machine Learning:\n- Supervised Learning: Learns from labeled training data\n- Unsupervised Learning: Finds patterns in unlabeled data\n- Reinforcement Learning: Learns through interaction and feedback\n\nCommon applications:\n- Image recognition and computer vision\n- Natural language processing\n- Recommendation systems\n- Predictive analytics\n- Autonomous vehicles\n\nKey concepts to understand:\n- Training data vs. test data\n- Overfitting and underfitting\n- Feature selection and engineering\n- Model evaluation metrics\n\nMachine learning requires a strong foundation in statistics, mathematics, and programming.",
+    "imageUrl": "https://images.unsplash.com/photo-1555255707-c07966088b7b?w=800&h=400&fit=crop",
+    "duration": 3
+  },
+  {
+    "Id": 9,
+    "topicId": 7,
+    "title": "SEO and Content Marketing",
+    "content": "Search Engine Optimization (SEO) and content marketing work together to improve your website's visibility and attract qualified traffic.\n\nSEO Fundamentals:\n- Keyword research and optimization\n- On-page SEO: title tags, meta descriptions, headers\n- Technical SEO: site speed, mobile-friendliness, crawlability\n- Off-page SEO: backlinks and domain authority\n\nContent Marketing Strategy:\n- Create valuable, relevant content for your audience\n- Consistent publishing schedule\n- Multiple content formats: blogs, videos, infographics\n- Content promotion across channels\n\nBest practices:\n- Focus on user intent, not just keywords\n- Write for humans first, search engines second\n- Measure and analyze performance regularly\n- Build authority through quality content\n\nSEO and content marketing are long-term strategies that require patience and consistency.",
+    "imageUrl": "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=400&fit=crop",
+    "duration": 3
+  },
+  {
+    "Id": 10,
+    "topicId": 8,
+    "title": "User Research and Personas",
+    "content": "User research is the foundation of great UX design. It helps you understand your users' needs, behaviors, and pain points to create more effective designs.\n\nTypes of user research:\n- Qualitative: Interviews, observations, usability testing\n- Quantitative: Surveys, analytics, A/B testing\n- Behavioral: What users do\n- Attitudinal: What users say\n\nCreating User Personas:\n- Based on real research data, not assumptions\n- Include demographics, goals, frustrations, behaviors\n- Keep personas focused and actionable\n- Use throughout the design process\n\nResearch methods:\n- User interviews: In-depth conversations\n- Surveys: Collect data from larger groups\n- Card sorting: Understand mental models\n- Usability testing: Observe users interacting with designs\n\nGood research leads to user-centered design decisions and reduces the risk of building the wrong thing.",
+    "imageUrl": "https://images.unsplash.com/photo-1551434678-e076c223a692?w=800&h=400&fit=crop",
+    "duration": 3
+  }
+]

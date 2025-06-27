@@ -1,0 +1,66 @@
+[
+  {
+    "Id": 1,
+    "name": "JavaScript Fundamentals",
+    "icon": "Code",
+    "difficulty": "Beginner",
+    "totalLessons": 15,
+    "description": "Master the basics of JavaScript programming"
+  },
+  {
+    "Id": 2,
+    "name": "React Development",
+    "icon": "Layers",
+    "difficulty": "Intermediate",
+    "totalLessons": 20,
+    "description": "Build modern web applications with React"
+  },
+  {
+    "Id": 3,
+    "name": "Data Structures",
+    "icon": "Database",
+    "difficulty": "Advanced",
+    "totalLessons": 12,
+    "description": "Understand essential data structures and algorithms"
+  },
+  {
+    "Id": 4,
+    "name": "Web Design Principles",
+    "icon": "Palette",
+    "difficulty": "Beginner",
+    "totalLessons": 10,
+    "description": "Learn design fundamentals for beautiful websites"
+  },
+  {
+    "Id": 5,
+    "name": "Python Programming",
+    "icon": "FileCode",
+    "difficulty": "Beginner",
+    "totalLessons": 18,
+    "description": "Start your journey with Python programming"
+  },
+  {
+    "Id": 6,
+    "name": "Machine Learning",
+    "icon": "Brain",
+    "difficulty": "Advanced",
+    "totalLessons": 25,
+    "description": "Introduction to ML concepts and applications"
+  },
+  {
+    "Id": 7,
+    "name": "Digital Marketing",
+    "icon": "Megaphone",
+    "difficulty": "Intermediate",
+    "totalLessons": 14,
+    "description": "Master digital marketing strategies and tools"
+  },
+  {
+    "Id": 8,
+    "name": "UI/UX Design",
+    "icon": "Figma",
+    "difficulty": "Intermediate",
+    "totalLessons": 16,
+    "description": "Create intuitive and beautiful user experiences"
+  }
+]
