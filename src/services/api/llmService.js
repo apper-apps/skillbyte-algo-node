@@ -1,12 +1,30 @@
 import OpenAI from 'openai'
 
 class LLMService {
-  constructor() {
+constructor() {
     // In a real app, this would be handled securely on the backend
+    const apiKey = import.meta.env.VITE_OPENAI_API_KEY;
+    
+    // Validate API key before creating client
+    if (!apiKey || apiKey === 'your-openai-api-key-here' || apiKey === 'your-api-key-here') {
+      console.warn('⚠️ OpenAI API key is missing or using placeholder value.');
+      console.warn('Please set VITE_OPENAI_API_KEY in your .env file.');
+      console.warn('Get your API key from: https://platform.openai.com/account/api-keys');
+    }
+    
     this.client = new OpenAI({
-      apiKey: import.meta.env.VITE_OPENAI_API_KEY || 'your-api-key-here',
+      apiKey: apiKey || 'your-api-key-here',
       dangerouslyAllowBrowser: true // Only for demo purposes
-    })
+    });
+    
+    this.isValidApiKey = apiKey && apiKey !== 'your-openai-api-key-here' && apiKey !== 'your-api-key-here';
+  }
+  
+  // Helper method to check if API is properly configured
+  validateApiKey() {
+    if (!this.isValidApiKey) {
+      throw new Error('OpenAI API key is not configured. Please set VITE_OPENAI_API_KEY in your .env file. Get your API key from: https://platform.openai.com/account/api-keys');
+    }
   }
 
   async generateLessons(topic, numLessons = 5) {
