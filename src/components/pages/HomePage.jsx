@@ -144,8 +144,7 @@ console.error('Error creating learning plan:', error)
 const CustomTopicModal = memo(() => {
     const handleInputChange = useCallback((e) => {
       setCustomTopicInput(e.target.value);
-    }, []);
-
+    }, [setCustomTopicInput]);
     const characterCount = useMemo(() => {
       return `${customTopicInput.length}/100 characters`;
     }, [customTopicInput.length]);
