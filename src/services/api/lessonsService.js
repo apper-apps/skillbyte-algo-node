@@ -127,6 +127,9 @@ async getCompletedLessons() {
       setTimeout(() => {
         resolve([...this.customLessons])
       }, 200)
-    })
+})
   }
 }
+
+// Export service instance
+export const lessonsService = new LessonsService();
